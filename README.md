@@ -125,9 +125,14 @@ OUTPUT
 
 
 
-UPDOWNCOUNTER
+COUNTER
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/a1fc5f68-aafb-49a1-93d2-779529f525fa)
+
+UPDOWNCOUNTER
+
+![320875970-dd12585a-157f-4b6f-a0c3-b421bb52434c](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/20920312-1c6e-40e3-984c-2af75b726b5f)
+
 
 CODE
 ```
@@ -152,6 +157,8 @@ OUTPUT
 
 MOD10COUNTER
 
+![320876746-3a4a4da2-7488-411d-8ea5-2e57c4fd942f](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/1f38505d-d423-4ec0-a7f4-6fc881ab5304)
+
 
 CODE
 ```
@@ -174,6 +181,9 @@ OUTPUT
 
 RIPPLECARRYCOUNTER
 
+![320960585-3ac04a13-47b6-4664-890d-25133409319b](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/0edfd64b-91fc-42ff-a937-e240a330e1f4)
+
+![320960626-a2e3e352-fd4f-4e4a-b2c9-3311cced9743](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/6b447aaa-5950-4e92-bfdd-28a575502a40)
 
 CODE
 ```
@@ -218,6 +228,7 @@ OUTPUT
 
   
 PROCEDURE:
+
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
 STEP:2  Select the device family, device, package and speed.       
 STEP:3  Select new source in the New Project and select Verilog Module as the Source type.                       
