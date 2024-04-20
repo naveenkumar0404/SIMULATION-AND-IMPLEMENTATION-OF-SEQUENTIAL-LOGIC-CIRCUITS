@@ -232,5 +232,6 @@ STEP:11  On the board, by giving required input, the LEDs starts to glow light, 
 
 
 RESULT
+
 Thus,the simulation and synthesis of SR,JK,T,D flipflops,counters by using vivado has been successfully excecuted and verified.
 
