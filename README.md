@@ -15,24 +15,205 @@ SR FLIPFLOP
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/77fb7f38-5649-4778-a987-8468df9ea3c3)
 
+CODE
+```
+module srff(s,r,clk,reset,q);
+input s,r,clk,reset;
+output reg q;
+always@(posedge clk)
+begin
+if(reset==1)
+q =1'b0;
+else 
+begin
+case({s,r})
+ 2'b00: q = q;
+ 2'b01: q = 1'b0;
+ 2'b10: q = 1'b1;
+ 2'b11: q = 1'bx;
+ default:q = ~q;
+endcase
+end 
+end
+endmodule
+```
+OUTPUT
+
+![322170315-76dd3b2b-2552-4558-9989-02a238ad5a52](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/dfe87063-e285-4985-b482-9637df3ae56d)
+
 
 JK FLIPFLOP
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/1510e030-4ddc-42b1-88ce-d00f6f0dc7e6)
 
+CODE
+
+```
+module jk_ff(j,k,clk,reset,q);
+input j,k,clk,reset;
+output reg q;
+always@(posedge clk)
+begin
+if(reset==1)
+q =1'b0;
+else 
+begin
+case({j,k})
+ 2'b00: q = q;
+ 2'b01: q = 1'b0;
+ 2'b10: q = 1'b1;
+ 2'b11: q = ~q;
+ default:q =1'b0;
+endcase
+end 
+end
+endmodule
+```
+
+OUTPUT
+
+![322170505-da8fdddd-f458-4d50-b041-cdec899e433e](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/754d6a7b-3888-4fb7-acf0-ae0680dfa1f2)
+
+
 T FLIPFLOP
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/7a020379-efb1-4104-85ee-439d660baa08)
+
+CODE
+
+```
+module tff(clk,rst,j,q);
+input clk,rst,j;
+output reg q;
+always@(posedge clk)
+begin
+case(t)
+1'b0:q=q;
+1'b1:q=~q;
+default=q=1'b0;
+endcase
+end
+endmodule
+```
+OUTPUT
+
+![322170538-39821533-3ed5-40d8-baff-361365b2a097](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/91412bd9-30d7-4c37-b6ed-64c61489f9b1)
 
 
 D FLIPFLOP
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/dda843c5-f0a0-4b51-93a2-eaa4b7fa8aa0)
 
+CODE
 
-COUNTER
+```
+module dff(clk,rst,d,q);
+input clk,rst,d;
+output reg q;
+always@(posedge clk)
+begin
+if(rst==1)
+q=1'b0;
+else
+q=d;
+end
+endmodule
+```
+OUTPUT
+![322170602-c9ddaf50-4871-434f-95f3-4d07d4237a7b](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/dd3396d0-affa-4f7f-aa6b-3ea824d7b564)
+
+
+
+
+UPDOWNCOUNTER
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-4/assets/6987778/a1fc5f68-aafb-49a1-93d2-779529f525fa)
+
+CODE
+```
+module updown(clk,rst,up_down,count);
+input clk,rst,up_down;
+output reg[3:0]count;
+always@(posedge clk)
+begin
+if(rst==1)
+count <= 4'b0000;
+else if (up_down == 1'b1)
+count <= count + 1'b1;
+else
+count <= count-1'b1;
+end
+endmodule
+```
+
+OUTPUT
+
+![323980011-f8568576-1d56-41f5-9d37-3d499c208bb1](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/08d84db9-7847-4a03-a915-1fad58ce7f0f)
+
+MOD10COUNTER
+
+
+CODE
+```
+module mod(clk,rst,count);
+input clk,rst;
+output reg[3:0]count;
+always @(posedge clk)
+begin
+if(rst==1 | count==4'b1001)
+count <= 4'b0000;
+else
+count <= count +1;
+end
+endmodule
+```
+
+OUTPUT
+
+![323981063-5c6e7959-bd3b-4f7d-b187-32961ef828f1](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/1421c91c-e4f6-4602-babc-0e1a33af170e)
+
+RIPPLECARRYCOUNTER
+
+
+CODE
+```
+module ripplecounter(clk,rst,q);
+input clk,rst;
+output [3:0]q;
+tff tff1(q[0],clk,rst);
+tff tff2(q[1],q[0],rst);
+tff tff3(q[2],q[1],rst);
+tff tff4(q[3],q[2],rst);
+endmodule
+module tff(q,clk,rst);
+input clk,rst;
+output q;
+wire d;
+dff df1(q,d,clk,rst);
+not n1(d,q);
+endmodule
+module dff(q,d,clk,rst);
+input d,clk,rst;
+output q;
+reg q;
+always@(posedge clk or posedge rst)
+begin
+if(rst)
+q=1'b10;
+else
+q=d;
+end
+endmodule
+```
+
+OUTPUT
+
+![323981592-f761bce4-93f5-4813-aaa0-5bccadc60b6d](https://github.com/naveenkumar0404/VLSI-LAB-EXP-04/assets/127510390/37082f54-7855-4759-a7db-f594fe352043)
+
+
+
+
+
 
 
   
